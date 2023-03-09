@@ -166,16 +166,36 @@ export function App() {
           style={{
             flex: 3,
             width: 600,
-            height: 600,
+            height: 500,
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          {data && serachTerm && (
+          {data && serachTerm ? (
             <Plot
               objectName={serachTerm}
               datasets={data}
               pointDescriptors={[]}
               style={{}}
             />
+          ) : (
+            <div
+              className="App-logo"
+              style={{
+                backgroundColor: theme.palette.primary.main,
+                display: "flex",
+                justifyContent: "center",
+                width: 200,
+                height: 200,
+                borderRadius: 20,
+              }}
+            >
+              <img
+                src="senti.png"
+                style={{ width: 170, height: 200, opacity: 1 }}
+                alt="logo"
+              />
+            </div>
           )}
         </div>
       </div>
