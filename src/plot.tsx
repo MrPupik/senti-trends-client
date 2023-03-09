@@ -91,7 +91,7 @@ export function Plot(props: {
     var all_labels: string[] = [];
 
     for (let i = 0; i < props.datasets.length; i++) {
-      all_labels = all_labels.concat(props.datasets[i].labels);
+      // all_labels = all_labels.concat(props.datasets[i].labels);
       data.datasets.push({
         label: props.datasets[i].vendor,
         data: props.datasets[i].data,
@@ -99,8 +99,13 @@ export function Plot(props: {
         backgroundColor: Colors[props.datasets[i].vendor].background,
       });
       all_labels.sort();
-      data.labels = all_labels;
     }
+    if (props.datasets[0].labels.length > props.datasets[1].labels.length) {
+      all_labels = props.datasets[0].labels;
+    } else {
+      all_labels = props.datasets[1].labels;
+    }
+    data.labels = all_labels;
 
     return data;
   }, [props.datasets]);
